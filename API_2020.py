@@ -4,7 +4,8 @@ import calendar
 import time
 from math import floor
 import geocoder
-#import urllib
+import random
+import csv
 
 def calc_days():
     '''Takes the number of seconds that we have 
@@ -14,11 +15,28 @@ def calc_days():
     ourTime= timeSinceEpoch-epochToBigDay
     return floor(ourTime/86400)
 
-def main():
-    quotes= ["Change your thoughts and you change your world. - Norman Vincent Peale",
-            "It's a beautiful day to save lives -Derek Shepard",
-            "I can't change the direction of the wind, but I can adjust my sails to always reach my destination. -Jimmy Dean"]
+def random_quote(num):
+    f=open("Quotes.csv")
 
+    csv_reader=csv.reader(f,delimiter=';')
+    quote=""
+
+    #skip first line
+    for row in csv_reader:
+        break
+    i=1
+    for row in csv_reader:
+        quote=(row[0]+" -"+row[1])
+        if i==num:
+            f.close()
+            return quote
+        else:
+            i+=1
+def main():
+    '''quotes= ["Change your thoughts and you change your world; Norman Vincent Peale",
+            "It's a beautiful day to save lives;Derek Shepard",
+            "I can't change the direction of the wind, but I can adjust my sails to always reach my destination;Jimmy Dean"]'''
+    
     #The url for the api request	
     weather_url = "https://community-open-weather-map.p.rapidapi.com/weather"
 
@@ -48,9 +66,11 @@ def main():
     drive=json.loads(drive.content)
     print(drive)
     '''
+    #use the csv to grab a random quote
+    rand_quote=random.randint(0,75965)
+    rand_quote=random_quote(rand_quote)
 
-    print(temp_data)
-    print(calc_days())
+    return temp_data,calc_days(),rand_quote
 
 if __name__ == "__main__":
     main()

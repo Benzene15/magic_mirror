@@ -1,17 +1,16 @@
 import csv
 f=open("Quotes.csv")
-out=open("quotes.txt","w")
 
 csv_reader=csv.reader(f,delimiter=';')
-out.write('[')
+quote=""
 
 #skip first line
 for row in csv_reader:
     break
+i=0
 for row in csv_reader:
-    out.write("\""+row[0]+" -"+row[1]+"\",")
-
-out.write(']')
+    quote=(row[0]+" -"+row[1])
+    i+=1
+print(i)
 
 f.close()
-out.close()
