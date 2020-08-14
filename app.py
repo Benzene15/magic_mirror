@@ -7,5 +7,8 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    temp,days,quote=API_2020.main()
-    return render_template('index.html',temp=temp, days=days,quote=quote)
+    temp=API_2020.weather()
+    days=API_2020.calc_days()
+    quote=API_2020.random_quote()
+    date_time=API_2020.date_time()
+    return render_template('index.html',temp=temp, days=days,quote=quote,date_time=date_time)

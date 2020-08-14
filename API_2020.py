@@ -17,9 +17,10 @@ def calc_days():
     ourTime= timeSinceEpoch-epochToBigDay
     return floor(ourTime/86400)
 
-def random_quote(num):
+def random_quote():
     f=open("Quotes.csv")
 
+    num=random.randint(0,75965)
     csv_reader=csv.reader(f,delimiter=';')
     quote=""
 
@@ -56,11 +57,25 @@ def weather():
     #1 hPa -> 0.029529983071445 inHg
     return temp_data
 
-'''
+def date_time():
+    t = time.localtime()
+    print(t)
+    year=t[0]
+    month=t[1]
+    day=t[2]
+    hour=t[3]
+    minute=t[4]
+    second=t[5]
+    
+    return year,month,day,hour,minute,second
+
 def main():
-    '''quotes= ["Change your thoughts and you change your world; Norman Vincent Peale",
-            "It's a beautiful day to save lives;Derek Shepard",
-            "I can't change the direction of the wind, but I can adjust my sails to always reach my destination;Jimmy Dean"]'''
+    date_time()
+
+def oldmain():
+    #quotes= ["Change your thoughts and you change your world; Norman Vincent Peale",
+    #        "It's a beautiful day to save lives;Derek Shepard",
+    #        "I can't change the direction of the wind, but I can adjust my sails to always reach my destination;Jimmy Dean"]
     
     #find minute and hour for when to call funcs
     t = time.localtime()
@@ -110,6 +125,6 @@ def main():
 
     return temp_data,calc_days(),rand_quote
 
+
 if __name__ == "__main__":
     main()
-    '''
