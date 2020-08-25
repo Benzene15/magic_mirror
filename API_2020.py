@@ -32,7 +32,7 @@ def random_quote():
         quote=(row[0]+" -"+row[1])
         if i==num:
             f.close()
-            return quote
+            return row[0],row[1]
         else:
             i+=1
 
