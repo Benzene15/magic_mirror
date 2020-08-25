@@ -40,6 +40,7 @@ rawData = requests.request("GET", url, headers=headers, params=querystring)
 intData=rawData.content[12:-1]
 tempData= json.loads(intData)
 tempData=tempData['main']							#pressure in inHg= num/33.8436
+print(tempData)
 print(tempData['temp'])
 
 

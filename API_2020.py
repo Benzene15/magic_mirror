@@ -60,17 +60,29 @@ def weather():
 def date_time():
     t = time.localtime()
     print(t)
-    year=t[0]
-    month=t[1]
-    day=t[2]
+    year=str(t[0])
+    month=str(t[1])
+    day=str(t[2])
     hour=t[3]
+    if(hour==0):
+        hour="00"
+    else:
+        hour=str(hour)
     minute=t[4]
-    second=t[5]
+    if(minute<10):
+        minute='0'+str(minute)
+    elif(minute==0):
+        minute="00"
+    else:
+        minute=str(minute)
+    second=str(t[5])
     
     return year,month,day,hour,minute,second
 
 def main():
     date_time()
+    print(date_time()[4])
+    print(weather()['weather'])
 
 def oldmain():
     #quotes= ["Change your thoughts and you change your world; Norman Vincent Peale",

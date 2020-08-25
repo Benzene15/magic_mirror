@@ -1,7 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Magic_mirror</title>ss
+    <title>Magic_mirror</title>
+    <meta http-equiv="refresh" content="60">
+    <script>
+        
+    </script>
     <style>
         h1{
             color: aqua;
@@ -16,8 +20,10 @@
 <body style="background-color: black;">
 
 <h1>Days You have been stuck with this Nerd: <br> {{days}}</h1>
-<p>{{date_time[3]}}:{{date_time[4]}}</p>
+<p style="position: absolute; top: -2%;right: 50%; font-size:300%;">{{date_time[3]}}:{{date_time[4]}}</p>
 <p>{{quote}}.</p>
+<p>{{temp}}</p>
+<img src={{w_label}}>
 
 </body>
 </html>
