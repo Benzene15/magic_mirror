@@ -80,10 +80,12 @@ def date_time():
     return year,month,day,hour,minute,second
 
 def main():
-    date_time()
-    print(date_time()[4])
-    print(weather()['weather'])
-
+    w=weather()
+    print("Main: "+ str(w['main']))
+    print("Wind: "+ str(w['wind']))
+    print("sys:" + str(w['sys']))
+    print("name: "+ str(w['name']))
+    calendar.timegm(time.strptime('2000-01-01 12:34:00', '%Y-%m-%d %H:%M:%S')))
 def oldmain():
     #quotes= ["Change your thoughts and you change your world; Norman Vincent Peale",
     #        "It's a beautiful day to save lives;Derek Shepard",
