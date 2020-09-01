@@ -79,13 +79,25 @@ def date_time():
     
     return year,month,day,hour,minute,second
 
+def calc_suntime(sun):
+    datetime=time.gmtime(sun)
+    hour=datetime[3]-5
+    if(hour<0):
+        hour=24+hour
+    
+    return [hour,datetime[4]]
+
 def main():
     w=weather()
     print("Main: "+ str(w['main']))
     print("Wind: "+ str(w['wind']))
     print("sys:" + str(w['sys']))
     print("name: "+ str(w['name']))
-    calendar.timegm(time.strptime('2000-01-01 12:34:00', '%Y-%m-%d %H:%M:%S')))
+    sunset=time.gmtime(w['sys']['sunset'])
+    hour=sunset[3]-5
+    if(hour<0):
+        hour=24+hour
+    print(str(hour)+ ":"+ str(sunset[4]))
 def oldmain():
     #quotes= ["Change your thoughts and you change your world; Norman Vincent Peale",
     #        "It's a beautiful day to save lives;Derek Shepard",
