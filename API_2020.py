@@ -37,22 +37,18 @@ def random_quote():
             i+=1
 
 def weather():
-    #The url for the api request	
-    weather_url = "https://community-open-weather-map.p.rapidapi.com/weather"
-
+   
     #lat and lon coords to call with api
     lat,lon = geocoder.ip('me').latlng
     #UWM_coords=(43.076070,-87.882350)
-
+    #The url for the api request	
+    weather_url = "http://api.openweathermap.org/data/2.5/weather?lat="+str(lat)+"&lon="+str(lon)+"&appid=eb6bb21d8de50409d27059f156d31132"
     #make and set our query init to (0,0) if coords can't be found
-    querystring = {"lat":"0","lon":"0","units":"imperial"}
+    querystring = {"units":"imperial"}
     querystring["lat"]=str(lat)
     querystring["lon"]=str(lon)
 
-    headers = {
-        'x-rapidapi-key': "c3a8bf4f4dmsh80a23d2f83e4ad1p13093fjsn898b5d24848b"
-        }
-    temp_data = requests.request("GET", weather_url, headers=headers, params=querystring)
+    temp_data = requests.request("GET", weather_url,params=querystring)
     temp_data=json.loads(temp_data.content)
     #1 hPa -> 0.029529983071445 inHg
     return temp_data
@@ -89,15 +85,8 @@ def calc_suntime(sun):
 
 def main():
     w=weather()
-    print("Main: "+ str(w['main']))
-    print("Wind: "+ str(w['wind']))
-    print("sys:" + str(w['sys']))
-    print("name: "+ str(w['name']))
-    sunset=time.gmtime(w['sys']['sunset'])
-    hour=sunset[3]-5
-    if(hour<0):
-        hour=24+hour
-    print(str(hour)+ ":"+ str(sunset[4]))
+    print(w)
+   
 def oldmain():
     #quotes= ["Change your thoughts and you change your world; Norman Vincent Peale",
     #        "It's a beautiful day to save lives;Derek Shepard",
@@ -154,3 +143,4 @@ def oldmain():
 
 if __name__ == "__main__":
     main()
+

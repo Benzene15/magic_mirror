@@ -35,21 +35,26 @@
 <body style="background-color: black;" onload="roundTemps()">
 
 <p style=" left:50%; top:0%; font-size:800%; transform: translate(-50%,0); ">{{date_time[3]}}:{{date_time[4]}}</p>
-<p style="left:50%; top:14%; font-size:400%; transform: translate(-50%,0);">{{date_time[2]}}/{{date_time[1]}}/{{date_time[0]}}</p>
+<p style="left:50%; top:14%; font-size:400%; transform: translate(-50%,0);">{{date_time[1]}}/{{date_time[2]}}/{{date_time[0]}}</p>
 
-<h1 style="position: absolute; top: 0%; left: 0%; margin: 0;">Days You have been stuck with this Nerd: <br> {{days}}</h1>
+<p style="position: absolute; top: 0%; left: 0%; margin: 0; font-size: 250%;">Days You have been stuck with this Nerd: <br> {{days}}</p>
 
 
-<p style="top: 43%; left: 3.25%">{{temp['weather'][0]['description']}}</p>
+<p style="top: 24%; left:7%; font-size: 400%;">{{temp['name']}}</p>
 <p class="description" style="top: 30%; left:10%; font-size: 400%;">{{temp['main']['temp']}}°<br>
     <min id="temp_min">{{temp['main']['temp_min']}}°</min><bar>|</bar><max id="temp_max">{{temp['main']['temp_max']}}°</max></p>
 
-<!--datetime.fromtimestamp(unixTime) This will give you time of setset and sunrise-->
-<img src={{w_label}} style="position: absolute; left:10px; top:250px; height: 200px; width: 200px;">
+<Figure>
+    <img src={{w_label}} style="position: absolute; left:10px; top:250px; height: 200px; width: 200px;">
+    
+</Figure>
+
 <p style="right:0; top:0; width: 20%; height: 30%;font-size: 200%;">{{quote[0]}}<br>-{{quote[1]}}.<br>
     <sun style="font-size:200%">Sunrise: {{sunrise[0]}}:{{sunrise[1]}}<br>Sunset: {{sunset[0]}}:{{sunset[1]}}</sun> <br>
-    <img src="/home/benzene/Documents/magic_mirror/shan_fav.jpg">
-</p>
+    <img src="static/shan_fav.jpg" style="height: 500px;">
+</p style="right:0; top:0; width: 20%; height: 30%;font-size: 200%;"></p>
+
+<p></p>
 
 </body>
 </html>
